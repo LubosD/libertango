@@ -79,8 +79,8 @@ module locking_tunnel() {
             linear_extrude(5, scale=[1, 1.3])
                 square([21,28], center=true);
             
-            linear_extrude(5, scale=[1, 1.6])
-                square([16,20], center=true);
+            linear_extrude(5, scale=[1.1, 1.6])
+                square([16.5,20], center=true);
         }
     }
 }
