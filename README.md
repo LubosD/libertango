@@ -1,7 +1,7 @@
 # Libertango
 This is a collection of wall faceplates and frames for 3D printing. The design is intended to be mutually compatible (but not identical) with [ABB Tango](http://www117.abb.com/index.asp?thema=2709).
 
-For now, it consists of Ethernet faceplates (double and single) and frames for one or more faceplates. I expect to add audio faceplates soon.
+For now, it consists of Ethernet faceplates (double and single), audio faceplates and frames for one or more faceplates.
 
 Designed using [OpenSCAD](http://www.openscad.org/) and [Inkscape](https://inkscape.org).
 
