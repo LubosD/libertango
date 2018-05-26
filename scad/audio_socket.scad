@@ -25,7 +25,7 @@ module front_rounded() {
         scale([100/106,100/106,100/120])
         minkowski() {
             front();
-            sphere(d=6, $fn=20);
+            sphere(d=6, $fn=50);
         }
         
         tango_shape(30);
