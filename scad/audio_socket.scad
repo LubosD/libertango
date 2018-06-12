@@ -6,6 +6,7 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 include <tango_shape.scad>;
 
 ROUNDED_TOP = true;
+DOUBLE = false;
 
 module front() {
     if (ROUNDED_TOP) {
@@ -32,11 +33,24 @@ module front_rounded() {
     }
 }
 
+module screw_tunnelx() {
+    difference() {
+        cylinder(h=13, d=6.5);
+        cylinder(h=13, d=3.5);
+    }
+    //translate([5,0,5])
+    //cube([4, 2, 10], center=true);
+}
+
 module body() {
     difference() {
         union() {
-            tango_shape(10);
-            front_rounded();
+            if (ROUNDED_TOP) {
+                tango_shape(10);
+                front_rounded();
+            } else {
+                tango_shape(15);
+            }
         }
         
         if (!ROUNDED_TOP) {
@@ -46,12 +60,12 @@ module body() {
             scale([0.94,0.94,0.94])
             tango_shape(9);
         }
+        
+        
     }
 }
 
-difference() {
-    body();
-    
+module panel_negative() {
     translate([0,0,ROUNDED_TOP ? 16.5 : 16])
         cube([45.5, 21.5, 10], center=true);
     
@@ -64,5 +78,33 @@ difference() {
         translate([17.25,0,8])
         cylinder(d=4, h=5, $fn=40);
     }
+    
+    
 }
 
+difference() {
+    body();
+    
+    if (!DOUBLE) {
+        panel_negative();
+    } else {
+        for (y=[-21.5/2, 21.5/2])
+            translate([0,y,0])
+            panel_negative();
+    }
+    
+    for(z=[0,180]) {
+            rotate([0,0,z]) {
+                translate([58.5/2,0,13])
+                cylinder(h=3, d=6.5, $fn=50);
+                
+                translate([58.5/2,0,7])
+                cylinder(h=10, d=3.5, $fn=50);
+            }
+        }
+}
+
+for(z=[0,180])
+    rotate([0,0,z])
+    translate([58/2,0,0])
+    screw_tunnel($fn=50);

@@ -5,7 +5,7 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 
 include <tango_shape.scad>
 
-COUNT = 1;
+COUNT = 2;
 
 module base_shape() {
     hull() {
@@ -91,13 +91,17 @@ difference() {
     n_shape();
     
     for (i = [0 : COUNT-1]) {
-        translate([(67+4)*i,0,0])
-        scale([68/66,68/66,1])
-        tango_shape(11);
+        translate([(67+4)*i,0,0]) {
+            scale([68/66,68/66,1])
+            tango_shape(11);
+            
+            scale([75/66,75/66,1])
+            tango_shape(1.5);
+        }
     }
 }
 
 for (i = [0 : COUNT-1]) {
-    translate([(67+4)*i,0,0])
+    translate([(67+4)*i,0,1.5])
         bottom();
 }
